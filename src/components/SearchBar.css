@@ -1,0 +1,20 @@
+
+.search-bar-button{
+    margin-right: 0.3rem;
+    padding: 0 2rem;
+    font-size: 1.3rem;
+}
+.input-group{
+    min-height: 4rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* placing the text inside in the middle */
+input[type="search"]::placeholder, input[type="search"]{
+    text-align: center;
+    font-size: 1.6rem;
+}
