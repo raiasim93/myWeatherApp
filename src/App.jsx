@@ -1,8 +1,14 @@
+import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import './App.css'
+import './index.css'
 function App() {
   return ( 
-    <SearchBar />
+    <div className='d-flex flex-column'>
+      <Header />
+      <SearchBar />
+    </div>
+   
   )
 }
 

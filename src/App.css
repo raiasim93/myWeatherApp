@@ -1,0 +1,57 @@
+body {
+    font-family: 'Kodchasan', sans-serif;
+    background-color: #151e21;
+    color: white;
+}
+.navbar-bg{
+    /* margin: -0.5rem -2rem 0rem -2rem; doesnot work */
+    background-color: #151e21;
+    border-bottom: 0.5px solid white;
+}
+
+.navbar-brand{
+    font-size: 1.8rem !important;
+    margin-left: 1.75rem;
+}
+
+/* navicon */
+
+.navIcon{
+    color: white;
+    font-size: 2rem !important;
+}
+
+.searchbar-container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   padding: 1rem;
+   background-color: #151e21
+}
+
+.search-input{
+    width: 50vw !important;
+    background-color: #1e2a2d !important;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: white !important;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    font-size: 1.2rem !important;
+}
+.search-input::placeholder {
+    color: white !important; /* Placeholder text color */
+    opacity: 0.5; /* Slightly lighter than the input text */
+    text-align: center; /* Center the placeholder text horizontally */
+    line-height: normal;
+    font-size: 1.3rem;
+}
+@media (max-width: 580px) {
+    .search-input {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
