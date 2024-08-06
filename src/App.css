@@ -1,5 +1,5 @@
 body {
-    font-family: 'Kodchasan', sans-serif;
+    font-family: 'Kodchasan', sans-serif !important;
     background-color: #151e21;
     color: white;
 }
