@@ -1,12 +1,14 @@
-import Header from './components/Header'
+import Navbar from './components/Navbar'
 import SearchBar from './components/SearchBar'
 import './App.css'
 import './index.css'
+import WeatherSummary from './components/WeatherSummary'
 function App() {
   return ( 
     <div className='d-flex flex-column'>
-      <Header />
+      <Navbar />
       <SearchBar />
+      <WeatherSummary />
     </div>
    
   )

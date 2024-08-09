@@ -2,7 +2,9 @@ body {
     font-family: 'Kodchasan', sans-serif !important;
     background-color: #151e21;
     color: white;
+
 }
+
 .navbar-bg{
     /* margin: -0.5rem -2rem 0rem -2rem; doesnot work */
     background-color: #151e21;
@@ -21,18 +23,22 @@ body {
     font-size: 2rem !important;
 }
 
+/* search bar css */
 .searchbar-container{
    display: flex;
    justify-content: center;
    align-items: center;
    width: 100%;
-   padding: 1rem;
-   background-color: #151e21
+   background-color: #151e21;
+   padding: 2rem 0;
+   
 }
 
 .search-input{
     width: 50vw !important;
-    background-color: #1e2a2d !important;
+    /* background-color: #151e21 !important; */
+    /* lighter background below */
+    background-color: #1e2a2d !important; 
     border: 1px solid #ccc;
     border-radius: 4px;
     color: white !important;
@@ -55,3 +61,47 @@ body {
         width: 100%; /* Full width on smaller screens */
     }
 }
+
+/* weathersummary */
+.weather-summary {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #151e21;
+    /* below is the lighter background */
+    /* background-color: #1e2a2d; */
+    color: white;
+   
+  }
+  
+  .summary-left,
+  .summary-icon,
+  .summary-right {
+    /* flex: 1; */
+    min-width: 300px;
+    display: flex;            
+    justify-content: center;  
+    align-items: center;   
+    min-height: 200px;
+    border: solid white 1px;
+  }
+
+  /* for any screens smaller than 580px */
+  
+  @media (max-width: 580px) {
+    :root {
+      font-size: 14px !important; /* Adjust the font size as needed */
+      
+    }
+    .weather-summary{
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .summary-left, .summary-icon, .summary-right{
+      width: 100%;
+      border-bottom: solid white 1px;
+      margin:1.5rem 0 !important;
+      height: 50px !important;
+    }
+  }
