@@ -5,7 +5,7 @@ import SummaryRight from './SummaryRight';
 function WeatherSummary(){
     
     return(
-        <div className='weather-summary p-4' > 
+        <div className='weather-summary d-flex justify-content-around align-items-center p-4' > 
             <SummaryLeft />
             <SummaryIcon />
             <SummaryRight />
