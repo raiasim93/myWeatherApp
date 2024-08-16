@@ -1,0 +1,97 @@
+body {
+    font-family: 'Kodchasan', sans-serif !important;
+    background-color: #151e21;
+    color: white;
+
+}
+
+.navbar-bg{
+    background-color: #151e21;
+    border-bottom: 0.5px solid white;
+}
+
+.navbar-brand{
+    font-size: 1.8rem !important;
+    margin-left: 1.75rem;
+}
+
+.navIcon{
+    color: white;
+    font-size: 2rem !important;
+}
+
+.searchbar-container{
+   background-color: #151e21;
+   padding: 2rem 0;
+}
+
+.search-input{
+    width: 60vw !important;
+    /* background-color: #151e21 !important; */
+    /* lighter background below */
+    background-color: #1e2a2d !important; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    font-size: 1.2rem !important;
+}
+.search-input::placeholder {
+    color: white !important; /* Placeholder text color */
+    opacity: 0.5; /* Slightly lighter than the input text */
+    line-height: normal;
+    font-size: 1.3rem;
+}
+
+/* Base styles for larger screens */
+.search-input {
+  width: 50vw !important; /* Adjust width */
+  background-color: #1e2a2d !important; /* Lighter background */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: white !important;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1.2rem !important;
+}
+
+.weather-summary {
+  display: flex;
+  background-color: #151e21;
+  color: white;
+  gap: 2rem;
+}
+
+.summary-left,
+.summary-icon,
+.summary-right {
+  min-height: 180px;
+  border: solid white 1px;
+  max-width: 300px;
+  min-width: 150px;
+  flex-shrink: 0;
+}
+
+/* Media query for screens smaller than 580px */
+@media (max-width: 580px) {
+  :root {
+      font-size: 10px !important; /* Adjust the base font size */
+  }
+
+  .search-input {
+      width: 50vw !important; /* Full width on smaller screens */
+  }
+
+  .weather-summary {
+      flex-direction: column; /* Stack items vertically */
+  }
+
+  .summary-left,
+  .summary-icon,
+  .summary-right {
+      width: 100%;
+      border-bottom: solid white 1px;
+      margin: 1.5rem 0 !important;
+      min-height: 140px !important;
+    
+  }
+}
