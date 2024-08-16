@@ -5,6 +5,7 @@ body {
 
 }
 
+/* navbar css */
 .navbar-bg{
     background-color: #151e21;
     border-bottom: 0.5px solid white;
@@ -20,40 +21,57 @@ body {
     font-size: 2rem !important;
 }
 
+
+
+
+/* searchbar component css */
 .searchbar-container{
    background-color: #151e21;
    padding: 2rem 0;
 }
 
-.search-input{
-    width: 60vw !important;
-    /* background-color: #151e21 !important; */
-    /* lighter background below */
-    background-color: #1e2a2d !important; 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 0.5rem;
-    font-size: 1.2rem !important;
-}
-.search-input::placeholder {
+
+.input-search::placeholder {
     color: white !important; /* Placeholder text color */
     opacity: 0.5; /* Slightly lighter than the input text */
     line-height: normal;
-    font-size: 1.3rem;
 }
 
-/* Base styles for larger screens */
-.search-input {
-  width: 50vw !important; /* Adjust width */
+
+.input-search {
+  width: 50vw !important; 
   background-color: #1e2a2d !important; /* Lighter background */
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 4px 0 0 4px;
   color: white !important;
   margin-top: 0.5rem;
   text-align: center;
-  font-size: 1.2rem !important;
+  font-size: 1.3rem !important;
 }
+.find-button {
+    background-color: #868080;
+    border: 1px solid #ccc !important;
+    border-radius: 0 4px 4px 0; /* Rounded corners on the right */
+    box-sizing: border-box;
+    margin-left: -3px !important;
+    margin-top: 0.5rem;
+    /* padding: 0.5rem 1rem; */
+     /* Make sure this matches the input padding */
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center; 
+    font-weight: 500 !important;
+}
+.input-search, .find-button {
+    height: 100%; 
+    padding: 0.5rem 1rem; 
+    border: 1px solid #ccc; 
+    font-size: 1.3rem !important;
+    box-sizing: border-box;
+  }
 
+/* hero section */
 .weather-summary {
   display: flex;
   background-color: #151e21;
@@ -77,7 +95,7 @@ body {
       font-size: 10px !important; /* Adjust the base font size */
   }
 
-  .search-input {
+  .input-search {
       width: 50vw !important; /* Full width on smaller screens */
   }
 

@@ -4,28 +4,38 @@ import './App.css'
 import './index.css'
 import WeatherSummary from './components/WeatherSummary'
 import { useState, useEffect } from 'react'
-import axios from "axios";
+
 
 function App() {
-  const [count, setCount]= useState(0);
-  
-  const fetchAPI = async () => {
-    const response = await axios.get("http://localhost:8080/api");
-    console.log(response.data.fruits);
-  };
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState(null);
 
-  useEffect(()=> {
-    fetchAPI();
-  }, []);
+  const handleSearch = async (cityName) => {
+    setCity(cityName);
+
+  try {
+    const response = await fetch(`http://localhost:8080/api/weather?city=${cityName}`);
+    const data = await response.json();
+    setWeather(data.weatherData);
+  } catch (error) {
+      console.log("Error retrieving data in the frontend: ", error);
+  }
+};
+
+useEffect(()=> {
+  if(weather!== null){
+    console.log("Updated Weather Data:", weather);
+  }
+},[weather]);
+
   return ( 
-    // <div className='d-flex flex-column'>
-    //   <Navbar />
-    //   <SearchBar />
-    //   <WeatherSummary />
-    // </div>
-   <div>
-
-   </div>
+    <div className='d-flex flex-column'>
+      <Navbar />
+      <SearchBar onSearch={handleSearch}/>
+      {/* <WeatherSummary /> */}
+      {weather && <WeatherSummary city={city} weather={weather} />}
+    </div>
+   
   );
 }
 
