@@ -10,6 +10,7 @@ function SearchBar({onSearch}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     onSearch(input);
+    setInput('');
   }
 
   return (

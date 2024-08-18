@@ -17,6 +17,7 @@ function App() {
     const response = await fetch(`http://localhost:8080/api/weather?city=${cityName}`);
     const data = await response.json();
     setWeather(data.weatherData);
+    console.log(data.weatherData);
   } catch (error) {
       console.log("Error retrieving data in the frontend: ", error);
   }
@@ -30,10 +31,11 @@ useEffect(()=> {
 
   return ( 
     <div className='d-flex flex-column'>
+    
       <Navbar />
       <SearchBar onSearch={handleSearch}/>
-      {/* <WeatherSummary /> */}
-      {weather && <WeatherSummary city={city} weather={weather} />}
+      <WeatherSummary />
+    
     </div>
    
   );
