@@ -3,7 +3,8 @@ const cors = require("cors");
 const axios = require("axios"); // Ensure axios is required
 const app = express();
 const { DateTime } = require("luxon");
-const port = 8080;
+const port = process.env.PORT || 8080;
+require('dotenv').config();
 
 const corsOptions = {
     origin: ["http://localhost:5173"],

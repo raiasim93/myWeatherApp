@@ -1,12 +1,16 @@
 import React from 'react';
 
-function SummaryIcon() {
+function SummaryIcon({icon}) {
+  if(!icon){
+    return null;
+  }
+  const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
   return (
-    <div className="summary-icon d-flex justify-content-center align-items-center flex-grow-1 ">
-        <h2> Icon </h2>
+    <div className="summary-icon">
+      <img className='img-fluid' src={iconUrl} alt="Weather icon" />
     </div>
-
   );
+
 }
 
 export default SummaryIcon;

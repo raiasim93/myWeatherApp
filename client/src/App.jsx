@@ -34,7 +34,19 @@ useEffect(()=> {
     
       <Navbar />
       <SearchBar onSearch={handleSearch}/>
-      <WeatherSummary />
+      {
+        weather &&
+        <WeatherSummary 
+          city={city}
+          summary={weather.summary}
+          icon={weather.icon}
+          temp_min={weather.temp_minimum}
+          temp_max={weather.temp_maximum}
+          sunrise={weather.sunrise}
+          sunset={weather.sunset}
+
+        /> 
+      }
     
     </div>
    
