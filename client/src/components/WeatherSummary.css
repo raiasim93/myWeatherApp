@@ -1,0 +1,54 @@
+
+/* hero section */
+.weather-summary {
+    background-color: #151e21;
+    color: white;
+    gap: 2rem;
+
+  }
+  
+  .summary-left,
+  .summary-icon,
+  .summary-right {
+    min-height: 250px;
+    border: solid rgb(65, 65, 65) 1px;
+   
+
+  }
+  
+  /* Media query for screens smaller than 580px */
+  @media (max-width: 580px) {
+    :root {
+        font-size: 10px !important; /* Adjust the base font size */
+    }
+  
+    .input-search {
+        width: 50vw !important; /* Full width on smaller screens */
+    }
+  
+    .summary-left,
+    .summary-icon,
+    .summary-right {
+        border-bottom: solid white 1px;
+        margin: 1.5rem 0 !important;
+        min-height: 200px !important;
+      
+    }
+  }
+
+  
+  /* custom image for iconSummary */
+  .custom-image{
+      height: 120px;
+      width: 120px;
+      max-width: 100%;
+  }
+
+  .blurry-line {
+    border: none;
+    height: 2px; 
+    background: rgba(255, 255, 255, 0.3); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    margin: 30px 0; 
+    width: 100%; 
+}
