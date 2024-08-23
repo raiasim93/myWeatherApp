@@ -5,7 +5,7 @@ function SummaryRight({sunrise, sunset}) {
   return (
     <div className="
     container-fluid
-    col-12 col-md-4 col-lg-4
+    col-8 col-md-4 col-lg-4
     summary-right d-flex justify-content-center align-items-center">
   <div className="row ">
     {/* Row for Sunrise */}

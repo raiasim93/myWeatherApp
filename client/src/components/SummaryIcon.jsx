@@ -8,7 +8,7 @@ function SummaryIcon({icon, summary}) {
   return (
     <div className="
     container-fluid
-    col-12 col-md-4 col-lg-4
+    col-8 col-md-4 col-lg-4
     summary-icon
     d-flex justify-content-center align-items-center
     ">

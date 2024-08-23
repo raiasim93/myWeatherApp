@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
+import SearchIcon from '@mui/icons-material/Search';
 
 function SearchBar({onSearch}) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [input, setInput] = useState('');
   // store in what user types in the state variable
   const handleInputChange = (event) =>{
@@ -12,22 +14,31 @@ function SearchBar({onSearch}) {
     onSearch(input);
     setInput('');
   }
+  function expand(){
+    setIsExpanded(true);
+  }
 
   return (
-   <div className="d-flex justify-content-center align-items-center w-100  searchbar-container ">
-    <form className='d-flex' onSubmit={handleSubmit}>
-      <input 
-        className="d-flex justify-content-center align-items-center text-center 
-        form-control input-search py-2" 
-        type="text" 
-        placeholder="Search your city"
-        value={input}
-        onChange={handleInputChange}
-        ></input>
-      <button type='submit' className='btn btn-secondary find-button px-5' > Find </button>
-    </form>
-
-   </div>
+    <div className="d-flex justify-content-center align-items-center w-100 searchbar-container">
+      <form className="d-flex" onSubmit={handleSubmit}>
+        <div className="input-group">
+          <input
+            onClick={expand}
+            className="form-control input-search py-2"
+            type="text"
+            placeholder="Search your city"
+            value={input}
+            onChange={handleInputChange}
+          />
+          {
+            isExpanded && <button type="submit" className="input-group-text find-button">
+            <SearchIcon style={{ fontSize: '1.5rem' }} />
+          </button>
+          }
+          
+        </div>
+      </form>
+    </div>
   );
 }
 

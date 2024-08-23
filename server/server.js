@@ -6,16 +6,32 @@ const { DateTime } = require("luxon");
 const port = process.env.PORT || 8080;
 require('dotenv').config();
 
+const API_KEY = "475b00c6c2bba75fa1d229c6aaebe11f";
 const corsOptions = {
     origin: ["http://localhost:5173"],
 };
 
 app.use(cors(corsOptions));
-
-app.get("/api/weather", async (req, res) => {
+app.get("/api/reverse-geocode", async (req, res) => {
+    const { lat, lon } = req.query;
     const API_KEY = "475b00c6c2bba75fa1d229c6aaebe11f";
+  
+    try {
+      const geocodingResponse = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`);
+      if (!geocodingResponse.data || geocodingResponse.data.length === 0) {
+        throw new Error("Location not found.");
+      }
+      const city = geocodingResponse.data[0].name;
+      res.json({ city });
+    } catch (error) {
+      console.log("Error reverse geocoding:", error);
+      res.status(500).json({ error: "Failed to reverse geocode" });
+    }
+  });
+  
+app.get("/api/weather", async (req, res) => {
+   
     const city = req.query.city;
-
 try {
    // Getting longitude and latitude using geocoding API
    const geocodingResponse = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`);
@@ -39,16 +55,18 @@ try {
         .toLocaleString(DateTime.TIME_SIMPLE);
 
     const weatherData = {
+        city: geocodingResponse.data[0].name,
         weather_main: todayWeather.weather[0].main,
         summary: todayWeather.summary,
         icon: todayWeather.weather[0].icon,
-        temp_minimum: todayWeather.temp.min.toFixed(),
-        temp_maximum: todayWeather.temp.max.toFixed(),
+        temp_minimum: Math.round(todayWeather.temp.min),
+        temp_maximum: Math.round(todayWeather.temp.max),
         humidity: todayWeather.humidity,
         sunrise: sunriseTimeLocal,
         sunset: sunsetTimeLocal,
         wind_speed: todayWeather.wind_speed.toFixed(),
         rainfall: todayWeather.rain || 0,  
+     
     };
 
     res.json({ weatherData });
