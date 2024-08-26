@@ -13,9 +13,16 @@ function SearchBar({onSearch}) {
     event.preventDefault();
     onSearch(input);
     setInput('');
+    setIsExpanded(false);
   }
   function expand(){
     setIsExpanded(true);
+  }
+
+  function collapse(){
+    if(input === ''){
+      setIsExpanded(false);
+    }
   }
 
   return (
@@ -24,6 +31,7 @@ function SearchBar({onSearch}) {
         <div className="input-group">
           <input
             onClick={expand}
+            onBlur={collapse}
             className="form-control input-search py-2"
             type="text"
             placeholder="Search your city"

@@ -6,12 +6,15 @@ import './components/WeatherSummary.css'
 import WeatherSummary from './components/WeatherSummary';
 import { useState, useEffect } from 'react';
 import HourlyForecast from './components/HourlyForecast';
-import SectionHeading from './components/SectionHeading';
+import WeeklyForecast from './components/WeeklyForecast';
+import ErrorCity from './components/CItyError';
 
 
 function App() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
+  const [hourlydata, setHourlydata] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // Function to reverse geocode latitude and longitude to get the city name
   const reverseGeocode = async (lat, lon) => {
@@ -27,13 +30,17 @@ function App() {
 
   // Function to fetch weather data
   const fetchWeather = async (cityName) => {
+    setLoading(true)
     try {
       const response = await fetch(`http://localhost:8080/api/weather?city=${cityName}`);
       const data = await response.json();
-      setWeather(data.weatherData);
+      setWeather(data.weatherData); //data is stored in here from backend
+      setHourlydata(data.weatherData.hourlyForecast);
       console.log(data.weatherData);
     } catch (error) {
       console.log("Error retrieving data in the frontend: ", error);
+    } finally{
+      setLoading(false);
     }
   };
 
@@ -66,20 +73,36 @@ function App() {
   }, [weather]);
 
   return (
-    <div className='d-flex flex-column'>
+    <div className='d-flex flex-column px-3'>
       <Navbar />
       <SearchBar onSearch={handleSearch} />
-      {weather && <SectionHeading title="Weather Details" />}
-      {weather && (
-        <WeatherSummary 
-          city={weather.city}
-          summary={weather.summary}
-          icon={weather.icon}
-          temp_min={weather.temp_minimum}
-          temp_max={weather.temp_maximum}
-          sunrise={weather.sunrise}
-          sunset={weather.sunset}
-        />
+      
+      {/* Loading State */}
+      {loading ? (
+        <div className="text-center text-white">
+          <p>Loading...</p>
+        </div>
+      ) : (
+        // Conditional Rendering for Weather or ErrorCity
+        weather ? (
+          <>
+            <WeatherSummary 
+              temp={weather.temp_now}
+              feels={weather.feels_like}
+              city={weather.city}
+              summary={weather.summary}
+              icon={weather.icon}
+              temp_min={weather.temp_minimum}
+              temp_max={weather.temp_maximum}
+              sunrise={weather.sunrise}
+              sunset={weather.sunset}
+            />
+            <HourlyForecast hourly={weather.hourlyForecast} />
+            <WeeklyForecast weekly={weather.weeklyForecast} />
+          </>
+        ) : (
+          <ErrorCity /> // Render ErrorCity if no weather data is available
+        )
       )}
     </div>
   );

@@ -5,7 +5,7 @@ function SummaryRight({sunrise, sunset}) {
   return (
     <div className="
     container-fluid
-    col-8 col-md-4 col-lg-4
+   col-4  col-md-4 col-lg-4
     summary-right d-flex justify-content-center align-items-center">
   <div className="row ">
     {/* Row for Sunrise */}
@@ -13,7 +13,7 @@ function SummaryRight({sunrise, sunset}) {
       {sunrise && (
         <div className="row container-fluid">
           <div className="col-4 d-flex justify-content-end  align-items-center">
-            <LightModeIcon style={{ fontSize: '50px' }} />
+            <LightModeIcon  style={{ fontSize: '3.5rem' }} />
           </div>
           <div className="col-8 d-flex justify-content-center align-items-center display-6">
             <p>{sunrise}</p>
@@ -27,7 +27,7 @@ function SummaryRight({sunrise, sunset}) {
       {sunset && (
         <div className="row container-fluid">
           <div className="col-4 d-flex justify-content-end align-items-center">
-            <WbTwilightIcon style={{ fontSize: '48px' }} />
+            <WbTwilightIcon style={{ fontSize: '3.5rem' }} />
           </div>
           <div className="col-8 d-flex justify-content-center align-items-center display-6">
             <p>{sunset}</p>
