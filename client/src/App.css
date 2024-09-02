@@ -1,5 +1,6 @@
 body {
-    font-family: 'Kodchasan', sans-serif !important;
+    /* font-family: 'Kodchasan', sans-serif !important; */
+    font-family: 'Times New Roman', Times, serif !important;
     background-color: #151e21;
     color: white;
 
@@ -70,3 +71,29 @@ body {
     font-size: 1.3rem !important;
     box-sizing: border-box;
   }
+  .searchbar-container {
+    position: relative; /* Ensures the dropdown is positioned relative to the container */
+    display: flex;
+    justify-content: center; /* Centers the search bar contents horizontally */
+    width: 100%;
+  }
+  
+  .suggestions-dropdown {
+    position: absolute; 
+    top: 100%; 
+    width: 100%;
+    background-color: #151e21 !important; 
+    color: white; 
+    z-index: 1000; 
+    list-style-type: none; 
+  }
+  
+  .suggestions-dropdown li {
+    /* padding: 10px;  */
+    cursor: pointer;
+  }
+  
+  .suggestions-dropdown li:hover {
+    background-color: #1c2a2d; 
+  }
+  

@@ -9,7 +9,7 @@ function WeeklyForecast({ weekly }) {
         <div className="row">
           {weekly.map((day, index) => (
             <div key={index} className="col-12 mb-3">
-              <div className="d-flex justify-content-around align-items-center" >
+              <div className="d-flex justify-content-between align-items-center" >
                 {/* Left-aligned date inside a div */}
                 <div>
                   <p className="mb-1">{day.date}</p>

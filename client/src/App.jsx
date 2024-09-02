@@ -15,6 +15,7 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [hourlydata, setHourlydata] = useState([]);
   const [loading, setLoading] = useState(true);
+  
 
   // Function to reverse geocode latitude and longitude to get the city name
   const reverseGeocode = async (lat, lon) => {
@@ -46,7 +47,6 @@ function App() {
 
   // Function to handle the search bar
   const handleSearch = async (cityName) => {
-    setCity(cityName);
     fetchWeather(cityName);
   };
 
@@ -57,7 +57,6 @@ function App() {
         const { latitude, longitude } = position.coords;
         const cityName = await reverseGeocode(latitude, longitude);
         if (cityName) {
-          setCity(cityName);
           fetchWeather(cityName);
         }
       }, (error) => {

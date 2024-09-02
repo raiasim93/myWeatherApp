@@ -7,7 +7,8 @@ function HourlyForecast({hourly}){
     return(
         <div className="container-fluid hourly-forecast">
              <SectionHeading title="Hourly Forecast " />
-             <div className="hourly-scroll-container d-flex overflow-auto p-4">
+             <div className="hourly-scroll-container d-flex overflow-auto p-4 ps-0"> 
+             {/* ps-0 sets padding start to 0 */}
                 {hourly.map((hour, index) => (
                 <div key={index} className="hourly-item text-center me-3">
                     <p className="mb-1">{hour.time}</p>

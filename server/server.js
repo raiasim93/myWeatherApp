@@ -102,6 +102,26 @@ try {
 }
 });
 
+// new route for city suggestions
+app.get("/api/city-suggestions", async (req, res) => {
+    const { query } = req.query;
+
+    if (!query || query.length < 3) {
+        return res.json([]); // Return empty array if the query is less than 3 characters
+    }
+
+    try {
+        const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`);
+        const suggestions = response.data.map(city => ({
+            name: city.name,
+            country: city.country,
+        }));
+        res.json(suggestions);
+    } catch (error) {
+        console.log("Error Fetching city suggestions");
+        res.status(500).json({ error: "Failed to fetch city suggestions" });
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
