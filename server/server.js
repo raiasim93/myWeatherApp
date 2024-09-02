@@ -6,7 +6,7 @@ const { DateTime } = require("luxon");
 const port = process.env.PORT || 8080;
 require('dotenv').config();
 
-const API_KEY = "475b00c6c2bba75fa1d229c6aaebe11f";
+const API_KEY = process.env.API_KEY;
 const corsOptions = {
     origin: ["http://localhost:5173"],
 };
@@ -14,7 +14,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.get("/api/reverse-geocode", async (req, res) => {
     const { lat, lon } = req.query;
-    const API_KEY = "475b00c6c2bba75fa1d229c6aaebe11f";
+  
   
     try {
       const geocodingResponse = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`);
